@@ -20,7 +20,7 @@ export default function Search() {
         <input type="submit" value="Search" />
       </form>
       <h2>{message}</h2>
-      <h5><a href="https://github.com/kvintasolo/weather-app-react" target="_blank"> Open-source code,</a> by Anna Stratanovych</h5>
+      <h5><a href="https://github.com/kvintasolo/weather-app-react" target="_blank" rel="noreferrer"> Open-source code,</a> by Anna Stratanovych</h5>
     </div>
   );
 }
