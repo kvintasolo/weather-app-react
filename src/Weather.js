@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Audio } from 'react-loader-spinner'
-export default function Weather(props){
-    function handleResponse(response){
-        alert(`the weather in ${response.data.name} is ${response.data.main.temp} °C`);
-    }
-    let apiKey="85ede89f59356b77be6fb516773c248a";
-    let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(handleResponse);
-    return(
-        <div className="Weather">
-        <h2>Hello from Weather</h2>
-        <Audio
-  height="80"
-  width="80"
-  radius="9"
-  color="pink"
-  ariaLabel="loading"
-  wrapperStyle
-  wrapperClass
-/>
-        </div>
-    );
+
+import "./styles.css";
+export default function Wather(props) {
+  const [temperature, setTemperature] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [humidity, setHumidity] = useState(null);
+  const [wind, setWind] = useState(null);
+  const [icon, setIcon] = useState(null);
+
+  function showTemperature(response) {
+    setTemperature(Math.round(response.data.main.temp));
+    setDescription(response.data.weather[0].description);
+    setHumidity(response.data.main.humidity);
+    setWind(response.data.wind.speed);
+    setIcon(response.data.weather[0].icon);
+  }
+  let image = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=85ede89f59356b77be6fb516773c248a&units=metric`;
+  axios.get(url).then(showTemperature);
+
+  return (
+    <ul>
+      <li>{props.city}</li>
+      <li>Temperature: {temperature} °C</li>
+      <li>Description: {description}</li>
+      <li>Humidity: {humidity} %</li>
+      <li>Wind: {wind} km/h</li>
+      <li>
+        <img src={image} alt={description} />
+      </li>
+    </ul>
+  );
 }
