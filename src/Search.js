@@ -19,8 +19,9 @@ export default function Search() {
         <input type="search" placeholder="Type a city" onChange={searchCity} />
         <input type="submit" value="Search" />
       </form>
+      <button className="btn btn-primary">Hello</button>
       <h2>{message}</h2>
-      <h5><a href="https://github.com/kvintasolo/weather-app-react" target="_blank" rel="noreferrer"> Open-source code,</a> by Anna Stratanovych</h5>
+      <h5>This project was coded by <a href="https://serene-mandazi-45beb2.netlify.app/" target="_blank" rel="noreferrer">Anna Stratanovych</a> and is <a href="https://github.com/kvintasolo/weather-app-react" target="_blank" rel="noreferrer"> Open-sourced on GitHub</a></h5>
     </div>
   );
 }
