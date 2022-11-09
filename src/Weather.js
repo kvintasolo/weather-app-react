@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Weather.css"
 
 import "./styles.css";
 export default function Wather(props) {
@@ -22,6 +23,7 @@ export default function Wather(props) {
   axios.get(url).then(showTemperature);
 
   return (
+    <div className="Weather">
     <ul>
       <li>{props.city}</li>
       <li>Temperature: {temperature} °C</li>
@@ -32,5 +34,6 @@ export default function Wather(props) {
         <img src={image} alt={description} />
       </li>
     </ul>
+    </div>
   );
 }
