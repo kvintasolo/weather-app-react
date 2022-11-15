@@ -1,0 +1,13 @@
+footer{
+    font-family: "Quicksand", sans-serif;
+    font-weight: bolder;
+    font-size: 12px;
+    text-align: center;
+    color: #ff9a9e;
+    max-width: 500px;
+   margin: 20px auto;
+}
+a{
+    text-decoration: none;
+    color: #9fb8d1;
+}

@@ -1,39 +1,60 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./Weather.css"
+import React from "react";
+import "./Weather.css";
 
-import "./styles.css";
-export default function Wather(props) {
-  const [temperature, setTemperature] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [humidity, setHumidity] = useState(null);
-  const [wind, setWind] = useState(null);
-  const [icon, setIcon] = useState(null);
-
-  function showTemperature(response) {
-    setTemperature(Math.round(response.data.main.temp));
-    setDescription(response.data.weather[0].description);
-    setHumidity(response.data.main.humidity);
-    setWind(response.data.wind.speed);
-    setIcon(response.data.weather[0].icon);
-  }
-  let image = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=85ede89f59356b77be6fb516773c248a&units=metric`;
-  axios.get(url).then(showTemperature);
-
-  return (
+export default function Weather(){
+  return(
     <div className="Weather">
-    <ul>
-      <li>{props.city}</li>
-      <li>Temperature: {temperature} °C</li>
-      <li>Description: {description}</li>
-      <li>Humidity: {humidity} %</li>
-      <li>Wind: {wind} km/h</li>
-      <li>
-        <img src={image} alt={description} />
-      </li>
-    </ul>
+      <div className="searchBar">
+      <form>
+      <div className="row">
+        <div className="col-9">
+        <input type="search" placeholder="Enter a city..." className="form-control"/>
+        </div>
+        <div className="col-3">
+       <button type="submit" className="btn btnght">Search</button>
+       </div>
+       </div>
+        </form> 
+        </div>
+       <div className="situation">
+      <h1>I'TS CLOUDY IN</h1>
+      <h1> KYIV</h1>
+      </div>
+      <div className="row">
+        <div className="col-4">
+<h2> 12<div className="float">°C |°F</div></h2>
+<h3>MAX 13°
+<br />
+MIN 10°
+</h3>
+        </div>
+        <div className="col-6">
+          <img alt="cloudy" src="https://delicate-weather.netlify.app/img/img_02_cloudy.png" />
+          </div>
+      </div>
+      <div className="row detail">
+        <div className="col-7">
+          <h4>
+            <ul>
+              <li>Kyiv</li>
+              <li>Wednesday 9 Nov 2022</li>
+              <li>15:27</li>
+            </ul>
+          </h4>
+        </div>
+        <div className="col-5">
+          <h4>
+            Real feel 12°
+            <br />
+            Wind 2 km/h1
+            <br />
+            Humidity 80%
+
+          </h4>
+        </div>
+      </div>
+
     </div>
-  );
+    
+  )
 }
