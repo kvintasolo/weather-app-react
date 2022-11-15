@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./Weather.css";
 
@@ -15,7 +16,7 @@ function handleResponse(response){
     realfeel:response.data.temperature.feels_like,
     humidity:response.data.temperature.humidity,
     description:response.data.condition.description,
-    time:response.data.time,
+    date:new Date(response.data.time*1000),
 
   });
 
@@ -55,9 +56,8 @@ MIN 10°
           <h4>
             <ul>
               <li>{weatherData.city}</li>
-              <li>Wednesday 9 Nov 2022</li>
-              <li>15:27</li>
-            </ul>
+              <li><FormattedDate date={weatherData.date} /></li>
+              </ul>
           </h4>
         </div>
         <div className="col-5">
