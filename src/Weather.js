@@ -2,21 +2,25 @@ import React, {useState} from "react";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather(){
-const [ready, setReady]=useState(false);
-const [weatherData,setweatherData] =useState({});
+export default function Weather(props){
+
+const [weatherData,setweatherData] =useState({ready:false});
 function handleResponse(response){
+  console.log(response.data.time);
   setweatherData({
+    ready:true,
     temperature:response.data.temperature.current,
     city: response.data.city,
     wind:response.data.wind.speed,
     realfeel:response.data.temperature.feels_like,
+    humidity:response.data.temperature.humidity,
+    description:response.data.condition.description,
+    time:response.data.time,
 
   });
 
-  setReady(true);
 }
-if (ready){
+if (weatherData.ready){
   return(
     <div className="Weather">
       <div className="searchBar">
@@ -32,8 +36,7 @@ if (ready){
         </form> 
         </div>
        <div className="situation">
-      <h1>I'TS CLOUDY IN</h1>
-      <h1>{weatherData.city}</h1>
+      <h1 className="text-uppercase">I'TS {weatherData.description} IN {weatherData.city}</h1>
       </div>
       <div className="row">
         <div className="col-4">
@@ -59,11 +62,11 @@ MIN 10°
         </div>
         <div className="col-5">
           <h4>
-            Real feel 12°
+            Real feel {Math.round(weatherData.realfeel)}°C
             <br />
             Wind {weatherData.wind} km/h
             <br />
-            Humidity 80%
+            Humidity {weatherData.humidity}%
 
           </h4>
         </div>
@@ -77,8 +80,8 @@ MIN 10°
 else{
 
   const apiKey="6a3c54ed0f54ba33o91e65bbf9bt60ae";
-  let city="Kyiv"
-  let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`
+ 
+  let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}`
 axios.get(apiUrl).then(handleResponse); 
 return "Loading..."
 }
