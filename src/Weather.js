@@ -20,6 +20,7 @@ function handleResponse(response){
     humidity:response.data.temperature.humidity,
     description:response.data.condition.description,
     date:new Date(response.data.time*1000),
+    icon:response.data.condition.icon_url,
 
   });
 
