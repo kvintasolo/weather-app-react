@@ -1,14 +1,17 @@
 import React, {useState} from "react";
-import FormattedDate from "./FormattedDate";
+
+import Search from "./Search";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props){
 
-const [weatherData,setweatherData] =useState({ready:false});
+const [weatherData,setWeatherData] =useState({ready:false});
+const [city, setCity] = useState (props.defaultCity);
 function handleResponse(response){
-  console.log(response.data.time);
-  setweatherData({
+  console.log(response.data);
+  setWeatherData({
+   
     ready:true,
     temperature:response.data.temperature.current,
     city: response.data.city,
@@ -21,68 +24,47 @@ function handleResponse(response){
   });
 
 }
+
+function handleSubmit(event){
+  event.preventDefault();
+  search();
+}
+function handleCityChange(event){
+setCity(event.target.value);
+}
+function search(){
+  const apiKey="6a3c54ed0f54ba33o91e65bbf9bt60ae";
+ 
+  let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`
+axios.get(apiUrl).then(handleResponse); 
+}
+
 if (weatherData.ready){
   return(
+    
     <div className="Weather">
       <div className="searchBar">
-      <form>
+      <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-9">
-        <input type="search" placeholder="Enter a city..." className="form-control"/>
+        <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange}/>
         </div>
         <div className="col-3">
-       <button type="submit" className="btn btnght">Search</button>
+       <button type="submit" className="btn btn-light">Search</button>
        </div>
        </div>
         </form> 
+        
         </div>
-       <div className="situation">
-      <h1 className="text-uppercase">I'TS {weatherData.description} IN {weatherData.city}</h1>
-      </div>
-      <div className="row">
-        <div className="col-4">
-<h2> {Math.round(weatherData.temperature)}<div className="float">°C |°F</div></h2>
-<h3>MAX 13°
-<br />
-MIN 10°
-</h3>
-        </div>
-        <div className="col-6">
-          <img alt="cloudy" src="https://delicate-weather.netlify.app/img/img_02_cloudy.png" />
-          </div>
-      </div>
-      <div className="row detail">
-        <div className="col-7">
-          <h4>
-            <ul>
-              <li>{weatherData.city}</li>
-              <li><FormattedDate date={weatherData.date} /></li>
-              </ul>
-          </h4>
-        </div>
-        <div className="col-5">
-          <h4>
-            Real feel {Math.round(weatherData.realfeel)}°C
-            <br />
-            Wind {weatherData.wind} km/h
-            <br />
-            Humidity {weatherData.humidity}%
-
-          </h4>
-        </div>
-      </div>
-
+        <Search data={weatherData}  />
     </div>
     
   );
   
 }
 else{
-
-  const apiKey="6a3c54ed0f54ba33o91e65bbf9bt60ae";
+search();
  
-  let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}`
-axios.get(apiUrl).then(handleResponse); 
 return "Loading..."
 }
 
