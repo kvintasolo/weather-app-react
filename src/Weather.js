@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import Search from "./Search";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
 
@@ -15,6 +16,7 @@ function handleResponse(response){
     ready:true,
     temperature:response.data.temperature.current,
     city: response.data.city,
+    coords:response.data.coordinates,
     wind:response.data.wind.speed,
     realfeel:response.data.temperature.feels_like,
     humidity:response.data.temperature.humidity,
@@ -58,6 +60,7 @@ if (weatherData.ready){
         
         </div>
         <Search data={weatherData}  />
+        <WeatherForecast coordinates={weatherData.coords}/>
     </div>
     
   );
