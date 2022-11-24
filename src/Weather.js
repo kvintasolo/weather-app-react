@@ -42,6 +42,19 @@ function search(){
 axios.get(apiUrl).then(handleResponse); 
 }
 
+function searchLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "6a3c54ed0f54ba33o91e65bbf9bt60ae";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/current";
+  let apiUrl = `${apiEndpoint}?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(handleResponse);
+}
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
 if (weatherData.ready){
   return(
     
@@ -49,12 +62,21 @@ if (weatherData.ready){
       <div className="searchBar">
       <form onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col-9">
+        <div className="col-7">
         <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange}/>
         </div>
         <div className="col-3">
        <button type="submit" className="btn btn-light">Search</button>
        </div>
+       <div className="col-2 locationButton">
+              <button
+                type="submit"
+                title="finding location"
+                onClick={getCurrentLocation}
+              >
+           🎯
+              </button>
+            </div>
        </div>
         </form> 
         
@@ -69,7 +91,7 @@ if (weatherData.ready){
 else{
 search();
  
-return "Loading..."
+return "Loading...📍"
 }
 
 }

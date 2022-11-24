@@ -10,13 +10,8 @@ h3{
     margin-top: 0px;
     margin-bottom: 0px;
     }
-img {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-    margin-top: -80px;
-    margin-right: -40px;  
-}  
+    
+
 h4{
 font-weight: 400;
 font-size: 16px;
@@ -34,6 +29,16 @@ a:hover {
     color: #ff9a9e;
   }
   
+  img{
+   
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    margin-top: -80px;
+    margin-right: -40px;  
+
+}
+
 .Weather{
     border: 1px solid #a375ce;
     margin-top: 10px;
@@ -103,3 +108,15 @@ a:hover {
     margin: 35px auto;}
 
     
+      
+      .locationButton button {
+        background: #9fb8d1;
+        border: 2px solid #91d4f9;
+        border-radius: 15px;
+        box-shadow: 0 0 18px rgb(0, 0, 0, 0.2);
+       
+        display: inline-block;
+        
+        width: 40px;
+        height: 30px;
+      }

@@ -13,14 +13,11 @@ export default function Search(props){
       <div className="col-4">
       <WeatherTemperature celsius={props.data.temperature} />
 
-<h3>MAX 13°
-<br />
-MIN 10°
-</h3>
+
       </div>
       <div className="col-6">
       
-        <img alt={props.data.description} src={props.data.icon} className="ing-fluid max-width: 100%" />
+        <img alt={props.data.description} src={props.data.icon} className="situationImage ing-fluid max-width: 100%" />
         </div>
     </div>
     <div className="row detail">
