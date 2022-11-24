@@ -14,6 +14,15 @@ export default function WeatherForecast(props){
         setForecast(response.data.daily);
         setLoaded(true);
     }
+    function load(){
+        let apiKey= "6a3c54ed0f54ba33o91e65bbf9bt60ae"
+console.log(props.coordinates.longitude);
+    let longitude=props.coordinates.longitude;
+    let latitude=props.coordinates.latitude;
+    let apiUrl=`https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`
+    axios.get(apiUrl).then(handleResponse);
+
+    }
     if (loaded){
         return (
         <div className="WeatherForecast"><div className="row">
@@ -25,17 +34,15 @@ export default function WeatherForecast(props){
             <WeatherForecastDay data={dailyForecast} />
             
             </div>)}
+            else{
+                return null;
+            }
             })}
         </div></div>)
     
     
 }
 else{  
-let apiKey= "6a3c54ed0f54ba33o91e65bbf9bt60ae"
-console.log(props.coordinates.longitude);
-    let longitude=props.coordinates.longitude;
-    let latitude=props.coordinates.latitude;
-    let apiUrl=`https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`
-    axios.get(apiUrl).then(handleResponse);
+load();
     return null;
 }}
