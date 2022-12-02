@@ -11,7 +11,7 @@ export default function Search(props){
     <h1 className="text-uppercase">I'TS {props.data.description} <br/> IN {props.data.city}</h1>
     </div>
     <div className="row">
-      <div className="col-4">
+      <div className="col-5">
       <WeatherTemperature celsius={props.data.temperature} className="temperature"/>
 
 
