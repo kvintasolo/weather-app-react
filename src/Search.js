@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherImage from "./WeatherImage"
 import WeatherTemperature from "./WeatherTemperature"
 import FormattedDate from "./FormattedDate";
 
@@ -11,13 +12,13 @@ export default function Search(props){
     </div>
     <div className="row">
       <div className="col-4">
-      <WeatherTemperature celsius={props.data.temperature} />
+      <WeatherTemperature celsius={props.data.temperature} className="temperature"/>
 
 
       </div>
       <div className="col-6">
-      
-        <img alt={props.data.description} src={props.data.icon} className="situationImage ing-fluid max-width: 100%" />
+      <WeatherImage code={props.data.icon} size={36}  alt={props.data.description} className="situationImage ing-fluid max-width: 100%" />
+        
         </div>
     </div>
     <div className="row detail">

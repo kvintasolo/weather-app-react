@@ -40,7 +40,7 @@ a:hover {
 }
 
 .Weather{
-    border: 1px solid #a375ce;
+  
     margin-top: 10px;
     padding: 35px;
     border-radius: 25px;
@@ -53,6 +53,8 @@ a:hover {
     overflow: hidden;
     font-family: "Quicksand", sans-serif;
     color: #ffffff;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.2);;
 }
 .Weather h1{
     font-weight: bold;
@@ -104,6 +106,9 @@ a:hover {
     position: relative;
     top: 0px;
 }
+.temperature{
+    font-size: 80px;
+}
 .detail {
     margin: 35px auto;}
 
@@ -111,7 +116,7 @@ a:hover {
       
       .locationButton button {
         background: #9fb8d1;
-        border: 2px solid #91d4f9;
+        border: 1px solid #9fb8d1;
         border-radius: 15px;
         box-shadow: 0 0 18px rgb(0, 0, 0, 0.2);
        
