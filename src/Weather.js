@@ -109,9 +109,9 @@ if (weatherData.ready){
     
     <div className="Weather" style={{ backgroundImage: `linear-gradient(${appColor})`}}>
     
-      <div className="searchBar">
+      <div className="searchBar ">
       <form onSubmit={handleSubmit}>
-      <div className="row">
+      <div className="row d-sm-flex justify-content-between">
         <div className="col-7">
         <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange}/>
         </div>
