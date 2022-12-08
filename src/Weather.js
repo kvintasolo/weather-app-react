@@ -9,7 +9,7 @@ export default function Weather(props){
 
 const [weatherData,setWeatherData] =useState({ready:false});
 const [city, setCity] = useState (props.defaultCity);
-const [appColor, setAppColor] = useState("linear-gradient(to top, #ff9a9e 0%, #f9df70 90%)");
+const [appColor, setAppColor] = useState("to top, #9fb8d1 0%, #c7e3f9 70%");
 function handleResponse(response){
   console.log(response.data);
   setWeatherData({
@@ -24,50 +24,56 @@ function handleResponse(response){
     description:response.data.condition.description,
     date:new Date(response.data.time*1000),
     icon:response.data.condition.icon,
+    country: response.data.country,
     
 
   });
   
-    if (response.data.condition.icon === "clear-sky-day") {
+    if (response.data.condition.icon === "clear-sky-day" ||  
+    response.data.condition.icon === "clear-sky-night") {
    
-      setAppColor("background-image: linear-gradient(to top, #9fb8d1 0%, #b7b7b7 70%)");
-    } else if (response.data.condition.icon === "clear-sky-night") {
-     
-      setAppColor("background-image: linear-gradient(to top, #9fb8d1 0%, #b7b7b7 70%)");
+      setAppColor("to top, #ff9a9e 0%, #f9df70 90%");
+    
     } else if (
       response.data.condition.icon === "few-clouds-day" ||
       response.data.condition.icon === "few-clouds-night"
     ) {
      
-      setAppColor("background-image: linear-gradient(to top, #ff9a9e 0%, #b7b7b7 70%)");
+      setAppColor("to top, #9fb8d1 0%, #b7b7b7 70%");
     } else if (
       response.data.condition.icon === "scattered-clouds-day" ||
       response.data.condition.icon === "scattered-clouds-night" ||
       response.data.condition.icon === "broken-clouds-day" ||
-      response.data.condition.icon === "broken-clouds-night" ||
-      response.data.condition.icon === "shower-rain-day" ||
-      response.data.condition.icon === "shower-rain-night"
+      response.data.condition.icon === "broken-clouds-night" 
     ) {
      
-      setAppColor("background-image: linear-gradient(to top, #ff9a9e 0%, #b7b7b7 70%)");
+      setAppColor("to top, #8db4d4 0%, #b099e1 70%");
     } else if (
       response.data.condition.icon === "rain-day" ||
       response.data.condition.icon === "rain-night" ||
       response.data.condition.icon === "thunderstorm-day" ||
-      response.data.condition.icon === "thunderstorm-night" 
+      response.data.condition.icon === "thunderstorm-night" ||
+      response.data.condition.icon === "shower-rain-day" ||
+      response.data.condition.icon === "shower-rain-night"
     ) {
       
-      setAppColor("linear-gradient(to top, #b7b7b7 0%, #9fb8d1 70%)");
+      setAppColor("to top, #b7b7b7 0%, #9fb8d1 70%");
     } else if (
       response.data.condition.icon === "mist-day" ||
       response.data.condition.icon === "mist-night"
     ) {
       
-      setAppColor("background-image: linear-gradient(to top, #9fb8d1 0%, #c7e3f9 70%)");
+      setAppColor("to top, #9fb8d1 0%, #c7e3f9 70%");
     }
   
+    else if (
+      response.data.condition.icon === "snow-day" ||
+      response.data.condition.icon === "snow-night"
+    ) {
+      
+      setAppColor("to top, #1179e1 0%, #90bde0 70%");
+    }
   
-
 }
 
 
@@ -101,7 +107,8 @@ function getCurrentLocation(event) {
 if (weatherData.ready){
   return(
     
-    <div className="Weather" style={{ backgroundColor: appColor }}>
+    <div className="Weather" style={{ backgroundImage: `linear-gradient(${appColor})`}}>
+    
       <div className="searchBar">
       <form onSubmit={handleSubmit}>
       <div className="row">

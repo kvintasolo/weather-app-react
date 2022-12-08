@@ -47,7 +47,7 @@ a:hover {
     align-items: center;
     max-width: 500px;
     margin-bottom: 10px;
-    background-image: linear-gradient(to top, #9fb8d1 0%, #b7b7b7 70%);
+    
     margin-right: auto;
     margin-left: auto;
     overflow: hidden;
@@ -119,9 +119,72 @@ a:hover {
         border: 1px solid #9fb8d1;
         border-radius: 15px;
         box-shadow: 0 0 18px rgb(0, 0, 0, 0.2);
-       
         display: inline-block;
-        
         width: 40px;
         height: 30px;
       }
+
+      .containerSunny {
+        margin-top: 10px;
+        padding: 35px 35px 35px 35px;
+        border-radius: 25px;
+        align-items: center;
+        max-width: 500px;
+        margin-bottom: 10px;
+        background-image: linear-gradient(to top, #ff9a9e 0%, #f9df70 90%);
+        overflow: hidden;
+        margin-right: auto;
+        margin-left: auto;
+        transition: all 200ms fade-out 200ms;}
+        .containerCloudy {
+          margin-top: 10px;
+          padding: 35px 35px 35px 35px;
+          border-radius: 25px;
+          align-items: center;
+          max-width: 500px;
+          margin-bottom: 10px;
+          background-image: linear-gradient(to top, #9fb8d1 0%, #b7b7b7 70%);
+          margin-right: auto;
+          margin-left: auto;
+          overflow: hidden;
+          transition: all 200ms fade-out 200ms;
+        }
+        .containerPartlyCloudy {
+          margin-top: 10px;
+          padding: 35px 35px 35px 35px;
+          border-radius: 25px;
+          align-items: center;
+          max-width: 500px;
+          margin-bottom: 10px;
+          background-image: linear-gradient(to top, #8db4d4 0%, #b099e1 70%);
+          margin-right: auto;
+          margin-left: auto;
+          overflow: hidden;
+          transition: all 200ms fade-out 200ms;
+        }
+        .containerRaining {
+          margin-top: 10px;
+          padding: 35px 35px 35px 35px;
+          border-radius: 25px;
+          align-items: center;
+          max-width: 500px;
+          margin-bottom: 10px;
+          overflow: hidden;
+          background-image: linear-gradient(to top, #b7b7b7 0%, #9fb8d1 70%);
+          margin-right: auto;
+          margin-left: auto;
+          transition: all 200ms fade-out 200ms;
+        }
+        .containerSnow {
+          margin-top: 10px;
+          padding: 35px 35px 35px 35px;
+          border-radius: 25px;
+          align-items: center;
+          max-width: 500px;
+          margin-bottom: 10px;
+          background-image: linear-gradient(to top, #33475c 0%, #90bde0 70%);
+          margin-right: auto;
+          margin-left: auto;
+          overflow: hidden;
+          transition: all 200ms fade-out 200ms;
+        }

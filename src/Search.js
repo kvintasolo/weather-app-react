@@ -9,6 +9,7 @@ export default function Search(props){
         <div className="Search">
     <div className="situation">
     <h1 className="text-uppercase">I'TS {props.data.description} <br/> IN {props.data.city}</h1>
+    <h6>{props.data.country}</h6>
     </div>
     <div className="row">
       <div className="col-5">
