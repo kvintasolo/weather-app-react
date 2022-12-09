@@ -111,7 +111,7 @@ if (weatherData.ready){
     
       <div className="searchBar ">
       <form onSubmit={handleSubmit}>
-      <div className="row d-sm-flex justify-content-between">
+      <div className="row ">
         <div className="col-7">
         <input type="search" placeholder="Enter a city..." className="form-control" autoFocus="on" onChange={handleCityChange}/>
         </div>
