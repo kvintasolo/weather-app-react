@@ -147,11 +147,28 @@ a:hover {
         .locationButton button {
          margin: 0 10px;
           }
+          .detail{
+            margin: 25px auto;
+          }
         .detail h4 {
-        
         font-size: 15px;
     }
     .WeatherForecast-temperatures{
-        font-size: 12px;
+        font-size: 10px;
     }
+    .Weather{
+        padding: 20px;
+        max-width: 600px;
+        margin-right: 10px;
+        margin-left: 10px;
       }
+      img{
+        margin-top: -100px;
+        margin-right: auto;  
+        margin-left: -80px;
+    
+    }
+    .WeatherForecast{
+        margin-top: -30px;
+    }
+    }
